@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="logo">
+                <h2><i class="fas fa-chart-line"></i> Dashboard</h2>
+            </div>
+            <ul class="menu">
+                <li class="active" data-view="dashboard"><i class="fas fa-home"></i> Dashboard</li>
+                <li data-view="profile"><i class="fas fa-user"></i> Profile</li>
+                <li data-view="chat"><i class="fas fa-comments"></i> Chatroom</li>
+                <li data-view="analytics"><i class="fas fa-chart-bar"></i> Analytics</li>
+                <li data-view="orders"><i class="fas fa-shopping-cart"></i> Orders</li>
+                <li data-view="settings"><i class="fas fa-cog"></i> Settings</li>
+                <li data-view="help"><i class="fas fa-question-circle"></i> Help</li>
+            </ul>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Dashboard View -->
+            <div id="dashboard-view" class="view active-view">
+                <!-- Dashboard content remains the same -->
+                <div class="header">
+                    <div class="search-bar">
+                        <i class="fas fa-search"></i>
+                        <input type="text" placeholder="Search...">
+                    </div>
+                    <div class="user-info">
+                        <i class="fas fa-bell"></i>
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="User">
+                        <span>Jane Smith</span>
+                    </div>
+                </div>
+
+                <h1 class="dashboard-title">Dashboard Overview</h1>
+
+                <!-- Cards Section -->
+                <div class="cards">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Total Revenue</h3>
+                            <i class="fas fa-dollar-sign"></i>
+                        </div>
+                        <div class="value">$24,580</div>
+                        <div class="progress">
+                            <div class="progress-bar" style="width: 75%; background-color: #3a7bd5;"></div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>New Users</h3>
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="value">1,248</div>
+                        <div class="progress">
+                            <div class="progress-bar" style="width: 60%; background-color: #00d2ff;"></div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Orders</h3>
+                            <i class="fas fa-shopping-cart"></i>
+                        </div>
+                        <div class="value">356</div>
+                        <div class="progress">
+                            <div class="progress-bar" style="width: 45%; background-color: #ff9a9e;"></div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Growth</h3>
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="value">+12.5%</div>
+                        <div class="progress">
+                            <div class="progress-bar" style="width: 85%; background-color: #a8e6cf;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Charts Section -->
+                <div class="charts">
+                    <div class="chart-container">
+                        <div class="chart-header">
+                            <h3>Revenue Overview</h3>
+                            <div class="chart-actions">
+                                <button class="timeframe-btn active" data-timeframe="week">Week</button>
+                                <button class="timeframe-btn" data-timeframe="month">Month</button>
+                                <button class="timeframe-btn" data-timeframe="year">Year</button>
+                            </div>
+                        </div>
+                        <canvas id="revenueChart"></canvas>
+                    </div>
+
+                    <div class="chart-container">
+                        <div class="chart-header">
+                            <h3>Traffic Sources</h3>
+                        </div>
+                        <canvas id="trafficChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Recent Activity -->
+                <div class="recent-activity">
+                    <h3>Recent Activity</h3>
+                    <ul class="activity-list">
+                        <li class="activity-item">
+                            <div class="activity-icon" style="background-color: #3a7bd5;">
+                                <i class="fas fa-shopping-cart"></i>
+                            </div>
+                            <div class="activity-details">
+                                <h4>New order received</h4>
+                                <p>Order #1234 for $245.00</p>
+                            </div>
+                            <span>2 min ago</span>
+                        </li>
+                        <li class="activity-item">
+                            <div class="activity-icon" style="background-color: #00d2ff;">
+                                <i class="fas fa-user-plus"></i>
+                            </div>
+                            <div class="activity-details">
+                                <h4>New user registered</h4>
+                                <p>John Doe joined the platform</p>
+                            </div>
+                            <span>1 hour ago</span>
+                        </li>
+                        <li class="activity-item">
+                            <div class="activity-icon" style="background-color: #ff9a9e;">
+                                <i class="fas fa-exclamation-triangle"></i>
+                            </div>
+                            <div class="activity-details">
+                                <h4>High traffic alert</h4>
+                                <p>Website traffic increased by 150%</p>
+                            </div>
+                            <span>3 hours ago</span>
+                        </li>
+                        <li class="activity-item">
+                            <div class="activity-icon" style="background-color: #a8e6cf;">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <div class="activity-details">
+                                <h4>Campaign performance</h4>
+                                <p>Summer campaign exceeded targets</p>
+                            </div>
+                            <span>5 hours ago</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Profile View -->
+            <div id="profile-view" class="view">
+                <!-- Profile content remains the same -->
+                <div class="header">
+                    <div class="search-bar">
+                        <i class="fas fa-search"></i>
+                        <input type="text" placeholder="Search...">
+                    </div>
+                    <div class="user-info">
+                        <i class="fas fa-bell"></i>
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="User">
+                        <span>Jane Smith</span>
+                    </div>
+                </div>
+
+                <h1 class="dashboard-title">My Profile</h1>
+
+                <div class="profile-container">
+                    <div class="profile-card">
+                        <div class="profile-header">
+                            <div class="profile-image">
+                                <img id="profile-picture" src="https://randomuser.me/api/portraits/women/44.jpg" alt="Profile">
+                                <input type="file" id="profile-picture-input" accept="image/*" style="display: none;">
+                                <button class="edit-photo-btn" onclick="document.getElementById('profile-picture-input').click()">
+                                    <i class="fas fa-camera"></i>
+                                </button>
+                            </div>
+                            <div class="profile-info">
+                                <h2>Jane Smith</h2>
+                                <p>Senior Marketing Manager</p>
+                                <span class="member-since">Member since January 2023</span>
+                                
+                                <!-- User Switcher Button -->
+                                <div class="user-switcher-container">
+                                    <button class="user-switcher-btn" onclick="toggleUserDropdown()">
+                                        <i class="fas fa-users"></i> Switch User
+                                        <i class="fas fa-chevron-down"></i>
+                                    </button>
+                                    <div class="user-dropdown" id="user-dropdown" style="display: none;">
+                                        <div class="dropdown-header">
+                                            <h4>Switch Account</h4>
+                                            <button class="close-dropdown" onclick="closeUserDropdown()">
+                                                <i class="fas fa-times"></i>
+                                            </button>
+                                        </div>
+                                        <div class="user-list" id="switch-user-list">
+                                            <!-- Users will be populated here -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="profile-stats">
+                            <div class="stat">
+                                <h3>Projects</h3>
+                                <span class="stat-value">24</span>
+                            </div>
+                            <div class="stat">
+                                <h3>Completed</h3>
+                                <span class="stat-value">18</span>
+                            </div>
+                            <div class="stat">
+                                <h3>Pending</h3>
+                                <span class="stat-value">6</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="profile-details">
+                        <div class="detail-section">
+                            <h3>Personal Information</h3>
+                            <div class="detail-grid">
+                                <div class="detail-item">
+                                    <label>Full Name</label>
+                                    <p>Jane Smith</p>
+                                </div>
+                                <div class="detail-item">
+                                    <label>Email</label>
+                                    <p>jane.smith@company.com</p>
+                                </div>
+                                <div class="detail-item">
+                                    <label>Phone</label>
+                                    <p>+1 (555) 123-4567</p>
+                                </div>
+                                <div class="detail-item">
+                                    <label>Location</label>
+                                    <p>New York, USA</p>
+                                </div>
+                                <div class="detail-item">
+                                    <label>Department</label>
+                                    <p>Marketing</p>
+                                </div>
+                                <div class="detail-item">
+                                    <label>Employee ID</label>
+                                    <p>#EMP-2048</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="detail-section">
+                            <h3>Bio</h3>
+                            <div class="bio-container">
+                                <div id="bio-display" class="bio-display">
+                                    <p id="bio-text">Experienced marketing professional with over 8 years in digital marketing strategy, brand development, and team leadership. Passionate about data-driven decision making and innovative campaign strategies.</p>
+                                    <button class="edit-bio-btn">
+                                        <i class="fas fa-edit"></i> Edit Bio
+                                    </button>
+                                </div>
+                                <div id="bio-edit" class="bio-edit" style="display: none;">
+                                    <textarea id="bio-textarea" class="bio-textarea" rows="4" placeholder="Write something about yourself..."></textarea>
+                                    <div class="bio-actions">
+                                        <button class="save-bio-btn">
+                                            <i class="fas fa-save"></i> Save
+                                        </button>
+                                        <button class="cancel-bio-btn">
+                                            <i class="fas fa-times"></i> Cancel
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button class="edit-profile-btn">
+                            <i class="fas fa-edit"></i> Edit Profile
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chatroom View -->
+            <div id="chat-view" class="view">
+                <div class="header">
+                    <div class="search-bar">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="chat-search" placeholder="Search messages...">
+                    </div>
+                    <div class="user-info">
+                        <i class="fas fa-bell"></i>
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="User">
+                        <span>Jane Smith</span>
+                    </div>
+                </div>
+
+                <h1 class="dashboard-title">Team Chatroom</h1>
+
+                <div class="chat-container">
+                    <!-- Online Users Sidebar -->
+                    <div class="chat-sidebar">
+                        <div class="sidebar-header">
+                            <h3>Online Users</h3>
+                            <span class="online-count" id="online-count">0 online</span>
+                        </div>
+                        <div class="user-list" id="chat-user-list">
+                            <!-- Online users will be populated here -->
+                        </div>
+                        <div class="sidebar-footer">
+                            <button class="btn-secondary" onclick="clearChat()">
+                                <i class="fas fa-trash"></i> Clear Chat
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Chat Messages Area -->
+                    <div class="chat-main">
+                        <div class="chat-header">
+                            <div class="chat-info">
+                                <h3>General Chat</h3>
+                                <p>Team communication channel</p>
+                            </div>
+                            <div class="chat-actions">
+                                <button class="btn-icon" onclick="toggleEmojiPicker()" title="Emoji">
+                                    <i class="far fa-smile"></i>
+                                </button>
+                                <button class="btn-icon" onclick="toggleUserList()" title="Users">
+                                    <i class="fas fa-users"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="messages-container" id="messages-container">
+                            <!-- Messages will be populated here -->
+                        </div>
+
+                        <div class="message-input-container">
+                            <div class="emoji-picker" id="emoji-picker" style="display: none;">
+                                <div class="emoji-grid">
+                                    <button onclick="addEmoji('😊')">😊</button>
+                                    <button onclick="addEmoji('😂')">😂</button>
+                                    <button onclick="addEmoji('👍')">👍</button>
+                                    <button onclick="addEmoji('❤️')">❤️</button>
+                                    <button onclick="addEmoji('🎉')">🎉</button>
+                                    <button onclick="addEmoji('🔥')">🔥</button>
+                                    <button onclick="addEmoji('👋')">👋</button>
+                                    <button onclick="addEmoji('💯')">💯</button>
+                                </div>
+                            </div>
+                            
+                            <!-- File upload preview -->
+                            <div class="file-preview" id="file-preview" style="display: none;">
+                                <div class="file-preview-header">
+                                    <span>File to send:</span>
+                                    <button class="remove-file" onclick="removeFile()">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </div>
+                                <div class="file-preview-content" id="file-preview-content">
+                                    <!-- File preview will be shown here -->
+                                </div>
+                            </div>
+                            
+                            <div class="input-group">
+                                <!-- File upload buttons -->
+                                <div class="file-upload-buttons">
+                                    <button class="btn-icon" onclick="document.getElementById('file-input').click()" title="Attach File">
+                                        <i class="fas fa-paperclip"></i>
+                                    </button>
+                                    <button class="btn-icon" onclick="document.getElementById('image-input').click()" title="Send Image">
+                                        <i class="fas fa-image"></i>
+                                    </button>
+                                </div>
+                                
+                                <input type="text" id="message-input" placeholder="Type a message..." maxlength="500">
+                                
+                                <button class="btn-primary" onclick="sendMessage()" id="send-button">
+                                    <i class="fas fa-paper-plane"></i> Send
+                                </button>
+                            </div>
+                            
+                            <!-- Hidden file inputs -->
+                            <input type="file" id="file-input" style="display: none;" accept="*/*" onchange="handleFileSelect(this.files)">
+                            <input type="file" id="image-input" style="display: none;" accept="image/*" onchange="handleImageSelect(this.files)">
+                            
+                            <div class="input-footer">
+                                <span class="char-count" id="char-count">0/500</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Analytics View -->
+            <div id="analytics-view" class="view">
+                <div class="header">
+                    <div class="search-bar">
+                        <i class="fas fa-search"></i>
+                        <input type="text" placeholder="Search...">
+                    </div>
+                    <div class="user-info">
+                        <i class="fas fa-bell"></i>
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="User">
+                        <span>Jane Smith</span>
+                    </div>
+                </div>
+
+                <h1 class="dashboard-title">Analytics</h1>
+                <div class="analytics-placeholder">
+                    <i class="fas fa-chart-bar"></i>
+                    <h3>Analytics Dashboard</h3>
+                    <p>Detailed analytics and insights will be displayed here.</p>
+                </div>
+            </div>
+
+            <!-- Orders View -->
+            <div id="orders-view" class="view">
+                <div class="header">
+                    <div class="search-bar">
+                        <i class="fas fa-search"></i>
+                        <input type="text" placeholder="Search...">
+                    </div>
+                    <div class="user-info">
+                        <i class="fas fa-bell"></i>
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="User">
+                        <span>Jane Smith</span>
+                    </div>
+                </div>
+
+                <h1 class="dashboard-title">Orders</h1>
+                <div class="analytics-placeholder">
+                    <i class="fas fa-shopping-cart"></i>
+                    <h3>Order Management</h3>
+                    <p>Order tracking and management will be displayed here.</p>
+                </div>
+            </div>
+
+            <!-- Settings View -->
+            <div id="settings-view" class="view">
+                <!-- Settings content remains the same -->
+                <div class="header">
+                    <div class="search-bar">
+                        <i class="fas fa-search"></i>
+                        <input type="text" placeholder="Search settings...">
+                    </div>
+                    <div class="user-info">
+                        <i class="fas fa-bell"></i>
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="User">
+                        <span>Jane Smith</span>
+                    </div>
+                </div>
+
+                <h1 class="dashboard-title">Settings</h1>
+
+                <div class="settings-container">
+                    <!-- Settings Sidebar -->
+                    <div class="settings-sidebar">
+                        <div class="settings-category active" data-category="appearance">
+                            <i class="fas fa-palette"></i>
+                            <span>Appearance</span>
+                        </div>
+                        <div class="settings-category" data-category="accessibility">
+                            <i class="fas fa-universal-access"></i>
+                            <span>Accessibility</span>
+                        </div>
+                        <div class="settings-category" data-category="notifications">
+                            <i class="fas fa-bell"></i>
+                            <span>Notifications</span>
+                        </div>
+                        <div class="settings-category" data-category="privacy">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>Privacy & Security</span>
+                        </div>
+                        <div class="settings-category" data-category="about">
+                            <i class="fas fa-info-circle"></i>
+                            <span>About</span>
+                        </div>
+                    </div>
+
+                    <!-- Settings Content -->
+                    <div class="settings-content">
+                        <!-- Appearance Settings -->
+                        <div id="appearance-settings" class="settings-section active">
+                            <h2><i class="fas fa-palette"></i> Appearance Settings</h2>
+                            
+                            <div class="setting-group">
+                                <h3>Theme</h3>
+                                <div class="theme-selector">
+                                    <div class="theme-option" data-theme="light">
+                                        <div class="theme-preview light-theme">
+                                            <div class="preview-header"></div>
+                                            <div class="preview-sidebar"></div>
+                                            <div class="preview-content"></div>
+                                        </div>
+                                        <span>Light</span>
+                                    </div>
+                                    <div class="theme-option" data-theme="dark">
+                                        <div class="theme-preview dark-theme">
+                                            <div class="preview-header"></div>
+                                            <div class="preview-sidebar"></div>
+                                            <div class="preview-content"></div>
+                                        </div>
+                                        <span>Dark</span>
+                                    </div>
+                                    <div class="theme-option" data-theme="auto">
+                                        <div class="theme-preview auto-theme">
+                                            <div class="preview-header"></div>
+                                            <div class="preview-sidebar"></div>
+                                            <div class="preview-content"></div>
+                                        </div>
+                                        <span>Auto</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="setting-group">
+                                <h3>Color Scheme</h3>
+                                <div class="color-schemes">
+                                    <div class="color-option active" data-scheme="blue">
+                                        <div class="color-preview" style="background: linear-gradient(135deg, #3a7bd5, #00d2ff);"></div>
+                                        <span>Blue</span>
+                                    </div>
+                                    <div class="color-option" data-scheme="green">
+                                        <div class="color-preview" style="background: linear-gradient(135deg, #00b09b, #96c93d);"></div>
+                                        <span>Green</span>
+                                    </div>
+                                    <div class="color-option" data-scheme="purple">
+                                        <div class="color-preview" style="background: linear-gradient(135deg, #667eea, #764ba2);"></div>
+                                        <span>Purple</span>
+                                    </div>
+                                    <div class="color-option" data-scheme="orange">
+                                        <div class="color-preview" style="background: linear-gradient(135deg, #f093fb, #f5576c);"></div>
+                                        <span>Orange</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="setting-group">
+                                <h3>Layout Density</h3>
+                                <div class="radio-group">
+                                    <label class="radio-option">
+                                        <input type="radio" name="density" value="comfortable" checked>
+                                        <span class="radio-checkmark"></span>
+                                        Comfortable
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="density" value="compact">
+                                        <span class="radio-checkmark"></span>
+                                        Compact
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Accessibility Settings -->
+                        <div id="accessibility-settings" class="settings-section">
+                            <h2><i class="fas fa-universal-access"></i> Accessibility Settings</h2>
+                            
+                            <div class="setting-group">
+                                <h3>Text Size</h3>
+                                <div class="slider-container">
+                                    <span class="slider-label">Small</span>
+                                    <input type="range" min="1" max="5" value="3" class="text-size-slider" id="textSizeSlider">
+                                    <span class="slider-label">Large</span>
+                                </div>
+                                <div class="slider-value" id="textSizeValue">Medium</div>
+                            </div>
+
+                            <div class="setting-group">
+                                <h3>High Contrast Mode</h3>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" id="highContrastToggle">
+                                    <span class="toggle-slider"></span>
+                                    <span class="toggle-label">Enable high contrast for better visibility</span>
+                                </label>
+                            </div>
+
+                            <div class="setting-group">
+                                <h3>Reduced Motion</h3>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" id="reducedMotionToggle">
+                                    <span class="toggle-slider"></span>
+                                    <span class="toggle-label">Reduce animations and transitions</span>
+                                </label>
+                            </div>
+
+                            <div class="setting-group">
+                                <h3>Focus Indicators</h3>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" id="focusIndicatorsToggle" checked>
+                                    <span class="toggle-slider"></span>
+                                    <span class="toggle-label">Show highlight around focused elements</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Notifications Settings -->
+                        <div id="notifications-settings" class="settings-section">
+                            <h2><i class="fas fa-bell"></i> Notification Settings</h2>
+                            
+                            <div class="setting-group">
+                                <h3>Push Notifications</h3>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" id="pushNotificationsToggle" checked>
+                                    <span class="toggle-slider"></span>
+                                    <span class="toggle-label">Enable push notifications</span>
+                                </label>
+                            </div>
+
+                            <div class="setting-group">
+                                <h3>Email Notifications</h3>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" id="emailNotificationsToggle">
+                                    <span class="toggle-slider"></span>
+                                    <span class="toggle-label">Receive email notifications</span>
+                                </label>
+                            </div>
+                            <div class="setting-group">
+                                <h3>Notification Types</h3>
+                                <div class="checkbox-group">
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" checked>
+                                        <span class="checkbox-checkmark"></span>
+                                        System alerts
+                                    </label>
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" checked>
+                                        <span class="checkbox-checkmark"></span>
+                                        Security updates
+                                    </label>
+                                    <label class="checkbox-option">
+                                        <input type="checkbox">
+                                        <span class="checkbox-checkmark"></span>
+                                        Marketing communications
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Privacy & Security Settings -->
+                        <div id="privacy-settings" class="settings-section">
+                            <h2><i class="fas fa-shield-alt"></i> Privacy & Security</h2>
+                            
+                            <div class="setting-group">
+                                <h3>Data Collection</h3>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" id="dataCollectionToggle">
+                                    <span class="toggle-slider"></span>
+                                    <span class="toggle-label">Allow anonymous data collection</span>
+                                </label>
+                                <p class="setting-description">Help us improve by sharing usage data</p>
+                            </div>
+
+                            <div class="setting-group">
+                                <h3>Auto Logout</h3>
+                                <select class="setting-select" id="autoLogoutSelect">
+                                    <option value="15">15 minutes</option>
+                                    <option value="30" selected>30 minutes</option>
+                                    <option value="60">1 hour</option>
+                                    <option value="120">2 hours</option>
+                                    <option value="0">Never</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- About Settings -->
+                        <div id="about-settings" class="settings-section">
+                            <h2><i class="fas fa-info-circle"></i> About</h2>
+                            
+                            <div class="about-content">
+                                <div class="app-info">
+                                    <div class="app-logo">
+                                        <i class="fas fa-chart-line"></i>
+                                    </div>
+                                    <div class="app-details">
+                                        <h3>Dashboard Pro</h3>
+                                        <p>Version 2.1.0</p>
+                                        <p>Build 2024.01.15</p>
+                                    </div>
+                                </div>
+
+                                <div class="about-links">
+                                    <button class="about-link">
+                                        <i class="fas fa-book"></i>
+                                        User Guide
+                                    </button>
+                                    <button class="about-link">
+                                        <i class="fas fa-shield-alt"></i>
+                                        Privacy Policy
+                                    </button>
+                                    <button class="about-link">
+                                        <i class="fas fa-file-contract"></i>
+                                        Terms of Service
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Settings Actions -->
+                        <div class="settings-actions">
+                            <button class="btn-secondary" id="resetSettings">
+                                <i class="fas fa-undo"></i> Reset to Defaults
+                            </button>
+                            <button class="btn-primary" id="saveSettings">
+                                <i class="fas fa-save"></i> Save Changes
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Help View -->
+            <div id="help-view" class="view">
+                <div class="header">
+                    <div class="search-bar">
+                        <i class="fas fa-search"></i>
+                        <input type="text" placeholder="Search...">
+                    </div>
+                    <div class="user-info">
+                        <i class="fas fa-bell"></i>
+                        <span>Jane Smith</span>
+                    </div>
+                </div>
+
+                <h1 class="dashboard-title">Help & Support</h1>
+                <div class="analytics-placeholder">
+                    <i class="fas fa-question-circle"></i>
+                    <h3>Help Center</h3>
+                    <p>Documentation and support resources will be displayed here.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="db-service.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
